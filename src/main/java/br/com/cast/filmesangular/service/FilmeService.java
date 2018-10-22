@@ -84,6 +84,7 @@ public class FilmeService {
 	public FilmeDTO buscarPorId(String id) {
 		Filme filme = fRepo.buscarPorId(id);
 		FilmeDTO fdto = new FilmeDTO();
+		fdto.setImdbID(id);
 		fdto.setTitle(filme.getTitle());
 		fdto.setYear(filme.getYear());
 		fdto.setRated(filme.getRated());

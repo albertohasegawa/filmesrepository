@@ -226,7 +226,8 @@ public class FilmeDTO {
 				+ ", actors=" + actors + ", plot=" + plot + ", language=" + language + ", country=" + country
 				+ ", awards=" + awards + ", poster=" + poster + ", ratings=" + ratings + ", metascore=" + metascore
 				+ ", imdbRating=" + imdbRating + ", imdbVotes=" + imdbVotes + ", imdbID=" + imdbID + ", type=" + type
-				+ ", dVD=" + DVD + ", boxOffice=" + boxOffice + ", production=" + production + ", website=" + website
-				+ ", response=" + response + "]";
+				+ ", DVD=" + DVD + ", boxOffice=" + boxOffice + ", production=" + production + ", website=" + website
+				+ ", response=" + response + ", search=" + search + "]";
 	}
+
 }

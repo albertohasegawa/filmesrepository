@@ -29,7 +29,7 @@ public class FilmeClient {
 	}
 	
 	public FilmeDTO buscarPorTitulo(String titulo) {
-		String tBusca = "t=" + titulo;
+		String tBusca = "s=" + titulo;
 		FilmeDTO resultado = this.rt.getForObject(OMDB_URL + tBusca + API_KEY, FilmeDTO.class);
 		System.out.println(resultado);
 		return resultado;

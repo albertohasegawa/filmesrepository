@@ -39,9 +39,11 @@ public class FilmeController {
 		try {
 			return fs.buscarDezPorTitulo(titulo);
 		} catch (Exception e) {
+			e.printStackTrace();
 			FilmeDTO fdto = fc.buscarPorTitulo(titulo);
 			for (SearchDTO search: fdto.getSearch()) {
-				FilmeDTO newfdto = fs.buscarPorId(search.getImdbID());
+				FilmeDTO newfdto = buscarPorId(search.getImdbID());
+				System.out.println("OLAR" + newfdto);
 				fs.inserir(newfdto);
 			}
 			return fs.buscarDezPorTitulo(titulo);

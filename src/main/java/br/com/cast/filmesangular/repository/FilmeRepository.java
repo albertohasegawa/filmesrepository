@@ -24,10 +24,11 @@ public class FilmeRepository {
 			    .replace("%", "!%")
 			    .replace("_", "!_")
 			    .replace("[", "![");
-		Query query = em.createQuery("FROM " + Filme.class.getName() + " WHERE title = :titulo");
+		Query query = em.createQuery("FROM " + Filme.class.getName() + " WHERE title like :titulo");
 		query.setParameter("titulo", "%" + titulo + "%");
 		query.setMaxResults(10);
 		List<Filme> lista =	(List<Filme>) query.getResultList();
+		System.out.println(lista.size());
 		if(lista.size() == 0)
 			return null;
 		else
