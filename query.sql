@@ -7,7 +7,7 @@
   ,Runtime    VARCHAR(20) NULL
   ,Genre      VARCHAR(100)  NULL
   ,Director   VARCHAR(100)  NULL
-  ,Writer     VARCHAR(500)  NULL
+  ,Writer     VARCHAR(1000)  NULL
   ,Actors     VARCHAR(200)  NULL
   ,Plot       VARCHAR(1000)  NULL
   ,Language   VARCHAR(200)  NULL
@@ -24,3 +24,6 @@
   ,Website    VARCHAR(100)  NULL
   ,Response   VARCHAR(10)  NULL
 );
+create schema filmeangular
+
+select * from filmeangular.filme where lower(title) like '%venga%'

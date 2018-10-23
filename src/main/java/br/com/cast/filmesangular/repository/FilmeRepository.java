@@ -9,6 +9,7 @@ import javax.persistence.Query;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import br.com.cast.filmesangular.dto.FilmeDTO;
 import br.com.cast.filmesangular.entidade.Filme;
 
 @Repository
@@ -24,7 +25,8 @@ public class FilmeRepository {
 			    .replace("%", "!%")
 			    .replace("_", "!_")
 			    .replace("[", "![");
-		Query query = em.createQuery("FROM " + Filme.class.getName() + " WHERE title like :titulo");
+		titulo.toLowerCase();
+		Query query = em.createQuery("FROM " + Filme.class.getName() + " WHERE lower(title) like :titulo");
 		query.setParameter("titulo", "%" + titulo + "%");
 		query.setMaxResults(10);
 		List<Filme> lista =	(List<Filme>) query.getResultList();
