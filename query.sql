@@ -1,4 +1,5 @@
-﻿CREATE TABLE filmeangular.filme(
+﻿create schema filmeangular
+CREATE TABLE filmeangular.filme(
    imdbID     VARCHAR(9) NOT NULL PRIMARY KEY
   ,Title      VARCHAR(100) NOT NULL
   ,Year       VARCHAR(40)  NULL
@@ -24,6 +25,18 @@
   ,Website    VARCHAR(100)  NULL
   ,Response   VARCHAR(10)  NULL
 );
-create schema filmeangular
+CREATE TABLE filmeangular.usuario (
+	id serial primary key,
+	nome varchar(200) not null,
+	usuario varchar(50) not null,
+	email varchar(200) not null,
+	senha varchar(50) not null,
+	
+
+
+
+
 
 select * from filmeangular.filme where lower(title) like '%venga%'
+
+
