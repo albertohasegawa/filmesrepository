@@ -30,11 +30,17 @@ CREATE TABLE filmeangular.usuario (
 	nome varchar(200) not null,
 	usuario varchar(50) not null,
 	email varchar(200) not null,
-	senha varchar(50) not null,
-	
+	senha varchar(50) not null);
+CREATE TABLE filmeangular.recomendacoes (
+	id serial primary key,
+	hora timestamp(0) not null,
+	texto varchar(2000) null,
+	id_usuario integer not null,
+	imdbid_filme varchar(10) null,
+	constraint fk_usr foreign key (id_usuario) references filmeangular.usuario (id),
+	constraint fk_filme foreign key (imdbid_filme) references filmeangular.filme (imdbid));
 
-
-
+kkkk
 
 
 select * from filmeangular.filme where lower(title) like '%venga%'

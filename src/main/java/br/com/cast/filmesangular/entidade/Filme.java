@@ -2,9 +2,12 @@
 package br.com.cast.filmesangular.entidade;
 
 import java.util.ArrayList;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
@@ -36,6 +39,8 @@ public class Filme {
 	private String Production;
 	private String Website;
 	private String Response;
+	@OneToMany(orphanRemoval=true, cascade=CascadeType.ALL, mappedBy="filme")
+	private List<Recomendacoes> recomendacoes;
 
 	// Getter Methods
 
