@@ -24,7 +24,8 @@ public class FilmeRepository {
 			    .replace("%", "!%")
 			    .replace("_", "!_")
 			    .replace("[", "![");
-		titulo.toLowerCase();
+		titulo = titulo.toLowerCase();
+		System.out.println(titulo);
 		Query query = em.createQuery("FROM " + Filme.class.getName() + " WHERE lower(title) like :titulo");
 		query.setParameter("titulo", "%" + titulo + "%");
 		query.setMaxResults(10);
@@ -45,8 +46,8 @@ public class FilmeRepository {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public List<Filme> buscarTodos() {
-		return em.createQuery("FROM " + Filme.class.getName()).getResultList();
+	public List<Filme> buscar20() {
+		return em.createQuery("FROM " + Filme.class.getName()).setMaxResults(20).getResultList();
 	}
 	
 	@Transactional

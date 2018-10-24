@@ -111,5 +111,38 @@ public class FilmeService {
 		fdto.setResponse(filme.getResponse());
 		return fdto;
 	}
-	
+	public List<FilmeDTO> buscar20() {
+		List<Filme> filmes = fRepo.buscar20();
+		List<FilmeDTO> fdtos = new ArrayList<>();
+		for (Filme filme : filmes) {
+			FilmeDTO fdto = new FilmeDTO();
+			fdto.setImdbID(filme.getImdbID());
+			fdto.setTitle(filme.getTitle());
+			fdto.setYear(filme.getYear());
+			fdto.setRated(filme.getRated());
+			fdto.setReleased(filme.getReleased());
+			fdto.setRuntime(filme.getRuntime());
+			fdto.setGenre(filme.getGenre());
+			fdto.setDirector(filme.getDirector());
+			fdto.setWriter(filme.getWriter());
+			fdto.setActors(filme.getActors());
+			fdto.setPlot(filme.getPlot());
+			fdto.setLanguage(filme.getLanguage());
+			fdto.setCountry(filme.getCountry());
+			fdto.setAwards(filme.getAwards());
+			fdto.setPoster(filme.getPoster());
+			fdto.setMetascore(filme.getMetascore());
+			fdto.setImdbRating(filme.getImdbRating());
+			fdto.setImdbVotes(filme.getImdbVotes());
+			fdto.setType(filme.getType());
+			fdto.setDVD(filme.getDVD());
+			fdto.setBoxOffice(filme.getBoxOffice());
+			fdto.setProduction(filme.getProduction());
+			fdto.setWebsite(filme.getWebsite());
+			fdto.setResponse(filme.getResponse());
+			fdtos.add(fdto);
+		}
+		return fdtos;
+		
+	}
 }

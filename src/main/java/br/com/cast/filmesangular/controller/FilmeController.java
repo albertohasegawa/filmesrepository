@@ -36,6 +36,17 @@ public class FilmeController {
 		}	
 	}
 	
+	@RequestMapping(path="filme/buscar20", method=RequestMethod.GET)
+	public List<FilmeDTO> buscarTodos() {
+		try {
+			System.out.println("BUSCOU NO MEU BANCO");
+			return fs.buscar20();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}	
+	}
+	
 	@RequestMapping(path="filme/buscaT", method=RequestMethod.GET)
 	public List<FilmeDTO> buscarPorTitulo(@RequestParam("t") String titulo) {
 		List<FilmeDTO> filmes;
