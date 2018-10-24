@@ -25,10 +25,12 @@ public class FilmeController {
 	@RequestMapping(path="filme/buscaId", method=RequestMethod.GET)
 	public FilmeDTO buscarPorId(@RequestParam("id") String id) {
 		try {
+			System.out.println("BUSCOU NO MEU BANCO" + fs.buscarPorId(id));
 			return fs.buscarPorId(id);
 		} catch (Exception e) {
 			FilmeDTO fdto = fc.buscarPorId(id);
 			fs.inserir(fdto);
+			System.out.println("BUSCOU NO OMDB" + fdto);
 			return fdto;
 
 		}	
@@ -36,17 +38,22 @@ public class FilmeController {
 	
 	@RequestMapping(path="filme/buscaT", method=RequestMethod.GET)
 	public List<FilmeDTO> buscarPorTitulo(@RequestParam("t") String titulo) {
+		List<FilmeDTO> filmes;
 		try {
-			return fs.buscarDezPorTitulo(titulo);
+			filmes = fs.buscarDezPorTitulo(titulo);
+			System.out.println("BUSCOU NO MEU BANCO" + filmes);
+			return filmes;
 		} catch (Exception e) {
 			e.printStackTrace();
 			FilmeDTO fdto = fc.buscarPorTitulo(titulo);
 			for (SearchDTO search: fdto.getSearch()) {
 				FilmeDTO newfdto = buscarPorId(search.getImdbID());
-				System.out.println("OLAR" + newfdto);
+				System.out.println("BUSCOU NO OMDB" + newfdto);
 				fs.inserir(newfdto);
 			}
-			return fs.buscarDezPorTitulo(titulo);
+			filmes = fs.buscarDezPorTitulo(titulo);
+			System.out.println(filmes);
+			return filmes;
 
 		}	
 	}

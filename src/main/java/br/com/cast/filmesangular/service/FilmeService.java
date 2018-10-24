@@ -21,6 +21,7 @@ public class FilmeService {
 		List<FilmeDTO> fdtos = new ArrayList<>();
 		for (Filme filme : filmes) {
 			FilmeDTO fdto = new FilmeDTO();
+			fdto.setImdbID(filme.getImdbID());
 			fdto.setTitle(filme.getTitle());
 			fdto.setYear(filme.getYear());
 			fdto.setRated(filme.getRated());
