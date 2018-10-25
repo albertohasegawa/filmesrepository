@@ -50,8 +50,18 @@ select * from filmeangular.filme where lower(title) like '%venga%'
 create table filmeangular.search (
 	id serial primary key,
 	title varchar(200) not null,
-	year varchar(6) null,
+	year varchar(20) null,
 	type varchar(40) null,
 	poster varchar(300) null,
-	imdbid varchar(10) not null,
-	constraint fk_imdb foreign key (imdbid) references filmeangular.filme (imdbid) );
+	imdbid varchar(10) not null);
+
+create table filmeangular.comentario (
+	id serial primary key,
+	texto varchar(2000) null,
+	hora timestamp(0) not null,
+	id_usuario integer null,
+	imdbid_filme varchar(15) not null,
+	constraint fk_comentario_usuario foreign key (id_usuario) references filmeangular.usuario (id),
+	constraint fk_id_filme foreign key (imdbid_filme) references filmeangular.filme (imdbID));
+
+Select * FROM filmeangular.comentario WHERE imdbid_filme = 'tt1436480'

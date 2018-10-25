@@ -7,6 +7,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import br.com.cast.filmesangular.entidade.Recomendacoes;
 
@@ -38,10 +39,12 @@ public class RecomendacoesRepository {
 		return query.getResultList();
 	}
 	
+	@Transactional
 	public void inserir(Recomendacoes rec) {
 		em.merge(rec);
 	}
 	
+	@Transactional
 	public void remover(Integer id) {
 		em.remove(buscarPorId(id));
 	}

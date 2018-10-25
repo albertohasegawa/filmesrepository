@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
 import br.com.cast.filmesangular.dto.FilmeDTO;
+import br.com.cast.filmesangular.dto.OmdbSearchDTO;
 
 @Component
 public class FilmeClient {
@@ -28,11 +29,11 @@ public class FilmeClient {
 		return resultado;
 	}
 	
-	public FilmeDTO buscarPorTitulo(String titulo) {
+	public OmdbSearchDTO buscarPorTitulo(String titulo) {
 		String tBusca = "s=" + titulo;
-		FilmeDTO resultado = this.rt.getForObject(OMDB_URL + tBusca + API_KEY, FilmeDTO.class);
+		OmdbSearchDTO resultado = this.rt.getForObject(OMDB_URL + tBusca + API_KEY, OmdbSearchDTO.class);
 		System.out.println(resultado);
-		return resultado;
+		return resultado;          
 	}
 	
 }

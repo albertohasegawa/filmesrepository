@@ -41,7 +41,8 @@ public class Filme {
 	private String Response;
 	@OneToMany(orphanRemoval=true, cascade=CascadeType.ALL, mappedBy="filme")
 	private List<Recomendacoes> recomendacoes;
-
+	@OneToMany(orphanRemoval=true, cascade=CascadeType.ALL, mappedBy="filme")
+	private List<Comentario> comentarios;
 	// Getter Methods
 
 	public String getTitle() {

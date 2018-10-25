@@ -25,6 +25,8 @@ public class Usuario {
 	private String senha;
 	@OneToMany(orphanRemoval=true, cascade=CascadeType.ALL, mappedBy="usuario")
 	private List<Recomendacoes> recomendacoes = new ArrayList<>();
+	@OneToMany(orphanRemoval=true, cascade=CascadeType.ALL, mappedBy="usuario")
+	private List<Comentario> comentarios = new ArrayList<>();
 	public Integer getId() {
 		return id;
 	}
