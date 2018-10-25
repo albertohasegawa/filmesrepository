@@ -46,3 +46,12 @@ kkkk
 select * from filmeangular.filme where lower(title) like '%venga%'
 
 
+
+create table filmeangular.search (
+	id serial primary key,
+	title varchar(200) not null,
+	year varchar(6) null,
+	type varchar(40) null,
+	poster varchar(300) null,
+	imdbid varchar(10) not null,
+	constraint fk_imdb foreign key (imdbid) references filmeangular.filme (imdbid) );
