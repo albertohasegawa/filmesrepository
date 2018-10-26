@@ -106,4 +106,9 @@ public class FilmeController {
 	public List<ComentarioDTO> buscarComentariosDoUsuario(@RequestParam("usr") Integer id) {
 		return cs.buscarTodosDoUsuario(id);
 	}
+	
+	@RequestMapping(path="comentario/top20", method=RequestMethod.GET)
+	public List<FilmeDTO> buscarTop20() {
+		return fs.top20();
+	}
 }

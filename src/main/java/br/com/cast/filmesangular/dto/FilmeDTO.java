@@ -60,6 +60,8 @@ public class FilmeDTO {
 	private String response;
 	@JsonProperty("Search")
 	private List<SearchDTO> search;
+	@JsonProperty("contador")
+	private Integer contador;
 	
 	
 	public String getTitle() {
@@ -217,6 +219,12 @@ public class FilmeDTO {
 	}
 	public void setSearch(List<SearchDTO> search) {
 		this.search = search;
+	}
+	public Integer getContador() {
+		return contador;
+	}
+	public void setContador(Integer contador) {
+		this.contador = contador;
 	}
 	@Override
 	public String toString() {

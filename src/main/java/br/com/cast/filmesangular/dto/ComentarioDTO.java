@@ -18,6 +18,7 @@ public class ComentarioDTO {
 	private Integer id_usuario;
 	@JsonProperty("imdbId")
 	private String imdbid_filme;
+
 	
 	public Integer getId() {
 		return id;
@@ -55,6 +56,7 @@ public class ComentarioDTO {
 	public void setImdbid_filme(String imdbid_filme) {
 		this.imdbid_filme = imdbid_filme;
 	}
+
 	@Override
 	public String toString() {
 		return "ComentarioDTO [id=" + id + ", texto=" + texto + ", hora=" + hora + ", nomeUsuario=" + nomeUsuario

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import br.com.cast.filmesangular.entidade.Comentario;
+import br.com.cast.filmesangular.entidade.Filme;
 
 @Repository
 public class ComentarioRepository {
@@ -20,6 +21,7 @@ public class ComentarioRepository {
 	public List<Comentario> buscarTodosDoFilme(String imdbId) {
 		Query query = em.createQuery("FROM " + Comentario.class.getName() + " WHERE imdbid_filme = :imdbid");
 		query.setParameter("imdbid", imdbId);
+		System.out.println(query.getResultList());
 		return query.getResultList();
 	}
 	
@@ -40,6 +42,6 @@ public class ComentarioRepository {
 		return em.find(Comentario.class, id);
 	}
 	
-	
+
 	
 }

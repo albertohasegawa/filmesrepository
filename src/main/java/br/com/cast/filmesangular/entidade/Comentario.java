@@ -28,6 +28,7 @@ public class Comentario {
 	@ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
 	@JoinColumn(name="imdbid_filme")
 	private Filme filme;
+
 	
 	public Integer getId() {
 		return id;
@@ -59,4 +60,5 @@ public class Comentario {
 	public void setHora(Date hora) {
 		this.hora = hora;
 	}
+
 }

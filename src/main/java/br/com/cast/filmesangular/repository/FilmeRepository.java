@@ -9,6 +9,7 @@ import javax.persistence.Query;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import br.com.cast.filmesangular.entidade.Comentario;
 import br.com.cast.filmesangular.entidade.Filme;
 
 @Repository
@@ -53,6 +54,17 @@ public class FilmeRepository {
 	@Transactional
 	public void inserir(Filme filme) {
 		em.merge(filme);
+	}
+	
+	public List<Filme> buscarMaisComentados() {
+		String a = Comentario.class.getName();
+		String b = Filme.class.getName();
+		Query query = em.createQuery("select a.filme.imdbid , a.filme.Poster, a.filme.Title , count(*) as contador from "+ a +" as a "
+				+ "GROUP BY a.filme.imdbid, a.filme.Poster, a.filme.Title ORDER BY contador DESC");
+		query.setMaxResults(20);
+
+		System.out.println(query.getResultList());
+		return (List<Filme>) query.getResultList();
 	}
 	
 	

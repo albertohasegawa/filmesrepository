@@ -1,7 +1,6 @@
 
 package br.com.cast.filmesangular.entidade;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -10,9 +9,10 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Formula;
 
 @Entity
-@Table(schema="filmeangular", name="filme")
+@Table(schema = "filmeangular", name = "filme")
 public class Filme {
 	private String Title;
 	private String Year;
@@ -39,10 +39,15 @@ public class Filme {
 	private String Production;
 	private String Website;
 	private String Response;
-	@OneToMany(orphanRemoval=true, cascade=CascadeType.ALL, mappedBy="filme")
+	@OneToMany(orphanRemoval = true, cascade = CascadeType.ALL, mappedBy = "filme")
 	private List<Recomendacoes> recomendacoes;
-	@OneToMany(orphanRemoval=true, cascade=CascadeType.ALL, mappedBy="filme")
+	@OneToMany(orphanRemoval = true, cascade = CascadeType.ALL, mappedBy = "filme")
 	private List<Comentario> comentarios;
+
+	//Formula roda uma query SQL e não HQL
+	@Formula(" (SELECT COUNT(c.id) FROM filmeangular.comentario c WHERE c.imdbid_filme = imdbid) ")
+	private Integer qtdComentarios;
+
 	// Getter Methods
 
 	public String getTitle() {
@@ -237,6 +242,14 @@ public class Filme {
 
 	public void setResponse(String Response) {
 		this.Response = Response;
+	}
+
+	public Integer getQtdComentarios() {
+		return qtdComentarios;
+	}
+
+	public void setQtdComentarios(Integer qtdComentarios) {
+		this.qtdComentarios = qtdComentarios;
 	}
 
 }

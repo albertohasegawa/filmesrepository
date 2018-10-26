@@ -21,9 +21,9 @@ public class ComentarioService {
 	private UsuarioRepository ur;
 	@Autowired
 	private FilmeRepository fr;
-	
+
 	public List<ComentarioDTO> buscarTodosDoUsuario(Integer id) {
-		List<Comentario> coms = cr.buscarTodosDoUsuario(id); 
+		List<Comentario> coms = cr.buscarTodosDoUsuario(id);
 		List<ComentarioDTO> cdtos = new ArrayList<>();
 		for (Comentario com : coms) {
 			ComentarioDTO cdto = new ComentarioDTO();
@@ -36,11 +36,11 @@ public class ComentarioService {
 			cdtos.add(cdto);
 		}
 		return cdtos;
-				
+
 	}
-	
+
 	public List<ComentarioDTO> buscarTodosDoFilme(String imdbId) {
-		List<Comentario> coms = cr.buscarTodosDoFilme(imdbId); 
+		List<Comentario> coms = cr.buscarTodosDoFilme(imdbId);
 		List<ComentarioDTO> cdtos = new ArrayList<>();
 		for (Comentario com : coms) {
 			ComentarioDTO cdto = new ComentarioDTO();
@@ -55,7 +55,7 @@ public class ComentarioService {
 		System.out.println("BUSCOU MEUS COMENTARIOS DO FILME" + cdtos);
 		return cdtos;
 	}
-	
+
 	public void inserir(ComentarioDTO cdto) {
 		Comentario com = new Comentario();
 		com.setTexto(cdto.getTexto());
@@ -64,9 +64,11 @@ public class ComentarioService {
 		com.setFilme(fr.buscarPorId(cdto.getImdbid_filme()));
 		cr.inserir(com);
 	}
+
 	public void remover(Integer id) {
 		cr.remover(id);
 	}
+
 	public ComentarioDTO buscarPorId(Integer id) {
 		Comentario com = cr.buscarPorId(id);
 		ComentarioDTO cdto = new ComentarioDTO();
@@ -78,4 +80,5 @@ public class ComentarioService {
 		cdto.setNomeUsuario(com.getUsuario().getNome());
 		return cdto;
 	}
+
 }
